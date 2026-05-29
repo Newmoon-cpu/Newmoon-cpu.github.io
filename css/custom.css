@@ -134,8 +134,25 @@ body::before {
 }
 
 /* ============================================
-   BANNER — hero with moon image
+   BANNER — hero with moon video
    ============================================ */
+#banner {
+  position: relative;
+  overflow: hidden;
+}
+
+#banner > video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Banner content stays above video */
+#banner .full-bg-img {
+  position: relative;
+  z-index: 1;
+}
+
 #banner .mask {
   backdrop-filter: none;
 }
@@ -145,7 +162,7 @@ body::before {
   font-size: 2.6rem;
   font-weight: 700;
   letter-spacing: -.03em;
-  text-shadow: 0 2px 16px rgba(0,0,0,.4);
+  text-shadow: 0 2px 20px rgba(0,0,0,.5);
 }
 
 #banner .scroll-down-bar { display: none; }
