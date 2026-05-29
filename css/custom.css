@@ -995,9 +995,92 @@ footer {
    ============================================ */
 #nprogress .bar { background: var(--accent) !important; height: 2px !important; }
 #nprogress .peg { box-shadow: 0 0 12px var(--accent),0 0 6px var(--accent) !important; }
-.tocbot-link { color: var(--text-sec) !important; }
-.tocbot-link:hover { color: var(--accent) !important; }
-.tocbot-active-link { color: var(--accent) !important; font-weight: 600 !important; }
+
+/* TOC sidebar */
+.sidebar {
+  position: sticky;
+  top: 70px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(128,128,128,0.2) transparent;
+}
+
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(128,128,128,0.2); border-radius: 2px; }
+
+#toc .toc-header {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--divider);
+}
+
+#toc .toc-header .iconfont { margin-right: 6px; color: var(--accent); }
+
+.tocbot-list { list-style: none; padding-left: 0; margin: 0; }
+.tocbot-list ol { list-style: none; padding-left: 16px; }
+
+.tocbot-link {
+  display: block;
+  padding: 4px 0;
+  font-size: 0.82rem;
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+  transition: all var(--fast) var(--ease);
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+  line-height: 1.5;
+}
+
+.tocbot-link:hover { color: var(--accent) !important; border-left-color: var(--accent-soft); }
+
+.tocbot-active-link {
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--accent) !important;
+}
+
+/* License box */
+.license-box {
+  background: var(--glass-xs);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.license-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+}
+
+.license-title div:last-child {
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  word-break: break-all;
+  margin-top: 2px;
+}
+
+.license-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 10px;
+}
+
+.license-meta-item { font-size: 0.78rem; color: var(--text-muted); }
+.license-meta-item div:first-child { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.6; }
+.license-meta-item a { color: var(--accent); }
 
 /* ============================================
    MOBILE / POST NAV
