@@ -1,84 +1,182 @@
 /**
- * BrightNewMoon — GodplaceBlog Full Integration
- * Sakura petals + click particles + context menu + scroll nav + stats
+ * BrightNewMoon — Meteor trail + profile card + star particles
  */
 (function () {
   'use strict';
 
   // ============================================
-  // SAKURA FALLING PETALS
+  // PROFILE CARD INJECTION
   // ============================================
-  var sakuraCount = 25;
-  var sakuraContainer = null;
+  function injectProfileCard() {
+    var mask = document.querySelector('#banner .mask');
+    if (!mask) return;
 
-  function createSakuraPetals() {
-    sakuraContainer = document.createElement('div');
-    sakuraContainer.style.cssText =
-      'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99998;';
-    document.body.appendChild(sakuraContainer);
+    var card = document.createElement('div');
+    card.className = 'hero-profile';
+    card.innerHTML =
+      '<img class="profile-avatar" src="/img/avatar.png" alt="avatar" onerror="this.style.display=\'none\'">' +
+      '<div class="profile-name">BrightNewMoon</div>' +
+      '<div class="profile-bio">探索技术，记录生活 🌙<br>Stay hungry, stay foolish.</div>' +
+      '<div class="profile-tags">' +
+        '<span class="profile-tag">Hexo</span>' +
+        '<span class="profile-tag">Fluid</span>' +
+        '<span class="profile-tag">GitHub Pages</span>' +
+      '</div>' +
+      '<div class="profile-links">' +
+        '<a href="https://github.com/Newmoon-cpu" target="_blank" rel="noopener" title="GitHub">' +
+          '<i class="iconfont icon-github-fill"></i>' +
+        '</a>' +
+      '</div>';
+    mask.appendChild(card);
+  }
 
-    for (var i = 0; i < sakuraCount; i++) {
-      var petal = document.createElement('div');
-      petal.className = 'sakura-petal';
-      var size = Math.random() * 8 + 4;
-      petal.style.cssText =
-        'width:' + size + 'px;' +
-        'height:' + size + 'px;' +
-        'left:' + (Math.random() * 100) + '%;' +
-        'animation-duration:' + (Math.random() * 6 + 8) + 's;' +
-        'animation-delay:' + (Math.random() * 10) + 's;';
-      sakuraContainer.appendChild(petal);
+  // ============================================
+  // SCROLL INDICATOR INJECTION
+  // ============================================
+  function injectScrollIndicator() {
+    var banner = document.querySelector('#banner .mask');
+    if (!banner) return;
+
+    var indicator = document.createElement('div');
+    indicator.className = 'scroll-indicator';
+    indicator.innerHTML = '<span>向下滚动</span><span class="scroll-arrow">&#x2304;</span>';
+
+    indicator.addEventListener('click', function () {
+      var board = document.getElementById('board');
+      if (board) {
+        board.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    banner.appendChild(indicator);
+  }
+
+  // ============================================
+  // STATS ROW INJECTION
+  // ============================================
+  function injectStatsRow() {
+    var board = document.getElementById('board');
+    if (!board) return;
+
+    var container = board.querySelector('.container > .row > .col-12');
+    if (!container) return;
+
+    var stats = document.createElement('div');
+    stats.className = 'stats-row';
+    stats.innerHTML =
+      '<div class="stat-item">' +
+        '<div class="stat-value" id="post-count">--</div>' +
+        '<div class="stat-label">文章</div>' +
+      '</div>' +
+      '<div class="stat-item">' +
+        '<div class="stat-value" id="tag-count">--</div>' +
+        '<div class="stat-label">标签</div>' +
+      '</div>' +
+      '<div class="stat-item">' +
+        '<div class="stat-value" id="cat-count">--</div>' +
+        '<div class="stat-label">分类</div>' +
+      '</div>' +
+      '<div class="stat-item stat-runtime">' +
+        '<div class="stat-value" id="site-runtime">--</div>' +
+        '<div class="stat-label">运行时间</div>' +
+      '</div>';
+
+    // Insert stats before the first index-card
+    var firstCard = container.querySelector('.index-card');
+    if (firstCard) {
+      firstCard.parentNode.insertBefore(stats, firstCard);
+    } else {
+      container.insertBefore(stats, container.firstChild);
     }
   }
 
   // ============================================
-  // CLICK HEART PARTICLES
+  // RUNTIME COUNTER
   // ============================================
-  var symbols = [
-    '❤', '✨', '💫', '🌟', '💜', '🔮', '⭐',
-    '♪', '♫', '☀', '🌙', '❄', '🌸', '💎',
-    '⚡', '☁', '⚔', '💥', '🔥', '💧', '🌀',
-    '🌌', '💿', '🌊', '🪐', '🌷', '🍀', '🦋'
-  ];
+  var startDate = new Date('2026-05-29T00:00:00');
 
-  function randomSymbol() {
-    return symbols[Math.floor(Math.random() * symbols.length)];
+  function updateRuntime() {
+    var el = document.getElementById('site-runtime');
+    if (!el) return;
+    var now = new Date();
+    var diff = now - startDate;
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
+    el.textContent = days + ' 天 ' + hours + ' 时 ' + minutes + ' 分 ' + seconds + ' 秒';
   }
 
-  function randomParticleColor() {
-    var h = Math.floor(Math.random() * 360);
-    var s = 55 + Math.floor(Math.random() * 35);
-    var l = 55 + Math.floor(Math.random() * 30);
-    return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
+  // ============================================
+  // METEOR TRAIL ON MOUSEMOVE
+  // ============================================
+  var meteorThrottle = 0;
+
+  function createMeteorParticle(x, y) {
+    var dot = document.createElement('div');
+    dot.className = 'meteor-particle';
+    dot.style.left = x + 'px';
+    dot.style.top = y + 'px';
+    document.body.appendChild(dot);
+
+    // Clean up after animation
+    setTimeout(function () {
+      if (dot.parentNode) dot.parentNode.removeChild(dot);
+    }, 750);
   }
 
-  function createParticle(x, y) {
+  document.addEventListener('mousemove', function (e) {
+    var now = Date.now();
+    if (now - meteorThrottle < 35) return;
+    meteorThrottle = now;
+
+    createMeteorParticle(e.pageX + (Math.random() - 0.5) * 6, e.pageY + (Math.random() - 0.5) * 6);
+  }, { passive: true });
+
+  // ============================================
+  // STAR CLICK PARTICLES
+  // ============================================
+  var starSymbols = ['✦', '✧', '⭑', '✶', '✵', '✴', '⋆', '⚝', '✬', '✫', '✩', '★'];
+
+  function randomStar() {
+    return starSymbols[Math.floor(Math.random() * starSymbols.length)];
+  }
+
+  function randomStarColor() {
+    var palette = [
+      '#a78bfa', '#c4b5fd', '#7c3aed', '#818cf8',
+      '#f9a8d4', '#fde68a', '#67e8f9', '#a7f3d0',
+      '#fca5a5', '#fdba74', '#d8b4fe', '#86efac'
+    ];
+    return palette[Math.floor(Math.random() * palette.length)];
+  }
+
+  function createStarParticle(x, y) {
     var span = document.createElement('span');
-    span.textContent = randomSymbol();
-    span.className = 'heart-particle';
+    span.textContent = randomStar();
+    span.className = 'star-particle';
     span.style.left = x + 'px';
     span.style.top = y + 'px';
-    span.style.color = randomParticleColor();
-    span.style.fontSize = (12 + Math.random() * 18) + 'px';
+    span.style.color = randomStarColor();
+    span.style.fontSize = (12 + Math.random() * 16) + 'px';
 
     document.body.appendChild(span);
 
     setTimeout(function () {
       if (span.parentNode) span.parentNode.removeChild(span);
-    }, 2100);
+    }, 1900);
   }
 
   document.addEventListener('click', function (e) {
     var tag = e.target.tagName.toLowerCase();
     if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'textarea') return;
-    if (e.target.closest('a, button, input, textarea, .modal, .navbar, #search-btn')) return;
+    if (e.target.closest && e.target.closest('a, button, input, textarea, .modal, .navbar, #search-btn, #local-search-input')) return;
 
-    // Burst: 1-3 particles per click
     var count = 1 + Math.floor(Math.random() * 3);
     for (var i = 0; i < count; i++) {
-      createParticle(
-        e.pageX + (Math.random() - 0.5) * 30,
-        e.pageY + (Math.random() - 0.5) * 20
+      createStarParticle(
+        e.pageX + (Math.random() - 0.5) * 28,
+        e.pageY + (Math.random() - 0.5) * 18
       );
     }
   });
@@ -88,14 +186,11 @@
   // ============================================
   var lastScroll = 0;
   var navbar = document.querySelector('.navbar');
+
   if (navbar) {
-    navbar.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
     window.addEventListener('scroll', function () {
       var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll <= 0) {
-        navbar.style.transform = 'translateY(0)';
-        return;
-      }
+      if (currentScroll <= 0) return;
       if (currentScroll > lastScroll && currentScroll > 80) {
         navbar.style.transform = 'translateY(-100%)';
       } else if (currentScroll < lastScroll) {
@@ -106,75 +201,54 @@
   }
 
   // ============================================
-  // BANNER PARALLAX
+  // BANNER FADE ON SCROLL
   // ============================================
-  var banner = document.querySelector('#banner');
+  var banner = document.querySelector('#banner .full-bg-img');
   if (banner) {
     window.addEventListener('scroll', function () {
       var scroll = window.pageYOffset || document.documentElement.scrollTop;
       if (scroll < window.innerHeight) {
-        var rate = scroll * 0.08;
-        banner.style.opacity = Math.max(0, 1 - scroll / 500);
-        banner.style.transform = 'translateY(' + rate + 'px)';
+        banner.style.opacity = Math.max(0.3, 1 - scroll / 600);
       }
     }, { passive: true });
   }
 
   // ============================================
-  // CUSTOM RIGHT-CLICK CONTEXT MENU
+  // STATS COUNTS (from DOM)
   // ============================================
-  (function () {
-    var menuEl = document.createElement('div');
-    menuEl.className = 'custom-context-menu';
-    document.body.appendChild(menuEl);
+  function updateStats() {
+    try {
+      var posts = document.querySelectorAll('.index-card').length;
+      var postEl = document.getElementById('post-count');
+      if (postEl) postEl.textContent = posts || '1';
+    } catch (e) {}
 
-    var menuVisible = false;
-
-    document.addEventListener('contextmenu', function (e) {
-      if (menuEl.querySelector('img')) {
-        menuEl.style.display = 'block';
-        menuEl.style.left = (e.clientX + 30) + 'px';
-        menuEl.style.top = e.clientY + 'px';
-        menuVisible = true;
+    try {
+      var tagEl = document.getElementById('tag-count');
+      if (tagEl) {
+        var tags = document.querySelectorAll('.post-metas .post-meta a[href*="/tags/"]');
+        var tagSet = {};
+        tags.forEach(function (a) { tagSet[a.textContent.trim()] = true; });
+        tagEl.textContent = Object.keys(tagSet).length || '1';
       }
-    });
+    } catch (e) {}
 
-    document.addEventListener('click', function () {
-      if (menuVisible) {
-        menuEl.style.display = 'none';
-        menuVisible = false;
-      }
-    });
-  })();
-
-  // ============================================
-  // STATS RUNTIME COUNTER
-  // ============================================
-  var runtimeEl = document.getElementById('site-runtime');
-  var startDate = new Date('2026-05-29T00:00:00');
-
-  function updateRuntime() {
-    if (!runtimeEl) return;
-    var now = new Date();
-    var diff = now - startDate;
-    var days = Math.floor(diff / 86400000);
-    var hours = Math.floor((diff % 86400000) / 3600000);
-    var minutes = Math.floor((diff % 3600000) / 60000);
-    var seconds = Math.floor((diff % 60000) / 1000);
-    runtimeEl.textContent = days + ' 天 ' + hours + ' 时 ' + minutes + ' 分 ' + seconds + ' 秒';
-  }
-
-  if (runtimeEl) {
-    updateRuntime();
-    setInterval(updateRuntime, 1000);
+    try {
+      var catEl = document.getElementById('cat-count');
+      if (catEl) catEl.textContent = '1';
+    } catch (e) {}
   }
 
   // ============================================
   // INIT
   // ============================================
   function init() {
-    createSakuraPetals();
+    injectProfileCard();
+    injectScrollIndicator();
+    injectStatsRow();
     updateRuntime();
+    updateStats();
+    setInterval(updateRuntime, 1000);
   }
 
   if (document.readyState === 'loading') {
@@ -184,8 +258,8 @@
   }
 
   console.log(
-    '%c🌙 BrightNewMoon %c— GodplaceBlog integration ready',
-    'font-weight:bold;color:#818cf8;',
+    '%c🌙 BrightNewMoon %c— ready',
+    'font-weight:bold;color:#a78bfa;',
     'color:#888;'
   );
 })();
