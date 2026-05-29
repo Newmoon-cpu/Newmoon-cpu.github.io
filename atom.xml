@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>BrightNewMoon</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://brightnewmoon.top/</id>
+  <link href="https://brightnewmoon.top/" rel="alternate"/>
+  <link href="https://brightnewmoon.top/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, BrightNewMoon</rights>
+  <subtitle>探索技术，记录生活</subtitle>
+  <title>BrightNewMoon</title>
+  <updated>2026-05-29T12:48:08.042Z</updated>
+  <entry>
+    <author>
+      <name>BrightNewMoon</name>
+    </author>
+    <category term="随笔" scheme="https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    <content>
+      <![CDATA[<p>历经一番折腾，我的个人博客终于搭建成功了！</p><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul><li><strong>Hexo</strong> — 静态博客框架</li><li><strong>Fluid</strong> — 简洁优雅的主题</li><li><strong>GitHub Pages</strong> — 免费托管</li><li><strong>自定义域名</strong> — brightnewmoon.top</li></ul><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>欢迎来到我的博客。这里会记录我的技术探索和生活感悟，希望你能在这里找到有趣的内容。</p><h2 id="后续计划"><a href="#后续计划" class="headerlink" title="后续计划"></a>后续计划</h2><p>持续学习，持续写作。Stay hungry, stay foolish.</p>]]>
+    </content>
+    <id>https://brightnewmoon.top/2026/05/29/hello-world/</id>
+    <link href="https://brightnewmoon.top/2026/05/29/hello-world/"/>
+    <published>2026-05-28T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>历经一番折腾，我的个人博客终于搭建成功了！</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li><strong>Hexo</strong> — 静态博客框架<]]>
+    </summary>
+    <title>博客上线啦！</title>
+    <updated>2026-05-29T12:48:08.042Z</updated>
+  </entry>
+</feed>
