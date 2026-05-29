@@ -377,7 +377,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="探索技术，记录生活"></span>
+            <span id="subtitle" data-typed-text="探索技术，记录生活 🌙,Stay hungry, stay foolish.,那些生死悲欢，你以为是人世一生，可月亮见过太多。,满地都是六便士，他却抬头看见了月亮。,我去旅行，是因为我决定了要去，并不是因为对风景的兴趣。,生命如此短暂，我们没有时间去互相争吵、道歉、发泄、责备。,时光只解催人老，不信多情，长恨离亭。,林间松韵，石上泉声，静里听来，识天地自然鸣珮。,被梦想俘虏的人就是在追逐自己的噩运。,乐人有个不怎么有出息的前提，不太在乎别人的看法。"></span>
           
         </div>
 
@@ -535,7 +535,9 @@
       }
       var text = subtitle.getAttribute('data-typed-text');
       
-        typing(text);
+        var texts = ["探索技术，记录生活 🌙","Stay hungry, stay foolish.","那些生死悲欢，你以为是人世一生，可月亮见过太多。","满地都是六便士，他却抬头看见了月亮。","我去旅行，是因为我决定了要去，并不是因为对风景的兴趣。","生命如此短暂，我们没有时间去互相争吵、道歉、发泄、责备。","时光只解催人老，不信多情，长恨离亭。","林间松韵，石上泉声，静里听来，识天地自然鸣珮。","被梦想俘虏的人就是在追逐自己的噩运。","乐人有个不怎么有出息的前提，不太在乎别人的看法。"];
+        var idx = Math.floor(Math.random() * texts.length);
+        typing(texts[idx]);
       
     })(window, document);
   </script>
@@ -553,6 +555,10 @@
   <script  src="/js/local-search.js" ></script>
 
 
+
+
+  
+<script src="/js/custom.js"></script>
 
 
 
