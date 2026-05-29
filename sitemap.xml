@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://brightnewmoon.top/2026/05/29/hello-world/</loc>
+    
+    <lastmod>2026-05-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://brightnewmoon.top/404/index.html</loc>
     
     <lastmod>2026-05-29</lastmod>
@@ -73,15 +82,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://brightnewmoon.top/2026/05/29/hello-world/</loc>
-    
-    <lastmod>2026-05-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://brightnewmoon.top/</loc>
@@ -90,6 +90,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://brightnewmoon.top/tags/%E6%95%99%E7%A8%8B/</loc>
@@ -119,13 +126,20 @@
     <priority>0.2</priority>
   </url>
   
+
+  
   <url>
-    <loc>https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://brightnewmoon.top/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
-
+  <url>
+    <loc>https://brightnewmoon.top/categories/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
