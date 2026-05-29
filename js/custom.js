@@ -55,6 +55,9 @@
   // STATS ROW INJECTION
   // ============================================
   function injectStatsRow() {
+    // Only show stats on timeline page
+    if (window.location.pathname.indexOf('/timeline/') !== 0) return;
+
     var board = document.getElementById('board');
     if (!board) return;
 
@@ -115,19 +118,22 @@
   function createMeteorParticle(x, y) {
     var dot = document.createElement('div');
     dot.className = 'meteor-particle';
+    var size = 2 + Math.random() * 4;
     dot.style.left = x + 'px';
     dot.style.top = y + 'px';
+    dot.style.width = size + 'px';
+    dot.style.height = size + 'px';
     document.body.appendChild(dot);
 
     // Clean up after animation
     setTimeout(function () {
       if (dot.parentNode) dot.parentNode.removeChild(dot);
-    }, 750);
+    }, 850);
   }
 
   document.addEventListener('mousemove', function (e) {
     var now = Date.now();
-    if (now - meteorThrottle < 35) return;
+    if (now - meteorThrottle < 28) return;
     meteorThrottle = now;
 
     createMeteorParticle(e.pageX + (Math.random() - 0.5) * 6, e.pageY + (Math.random() - 0.5) * 6);
