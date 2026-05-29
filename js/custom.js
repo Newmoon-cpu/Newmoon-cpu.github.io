@@ -136,7 +136,7 @@
     if (now - meteorThrottle < 28) return;
     meteorThrottle = now;
 
-    createMeteorParticle(e.pageX + (Math.random() - 0.5) * 6, e.pageY + (Math.random() - 0.5) * 6);
+    createMeteorParticle(e.clientX + (Math.random() - 0.5) * 6, e.clientY + (Math.random() - 0.5) * 6);
   }, { passive: true });
 
   // ============================================
@@ -181,8 +181,8 @@
     var count = 1 + Math.floor(Math.random() * 3);
     for (var i = 0; i < count; i++) {
       createStarParticle(
-        e.pageX + (Math.random() - 0.5) * 28,
-        e.pageY + (Math.random() - 0.5) * 18
+        e.clientX + (Math.random() - 0.5) * 28,
+        e.clientY + (Math.random() - 0.5) * 18
       );
     }
   });
