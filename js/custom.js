@@ -188,38 +188,6 @@
   });
 
   // ============================================
-  // SCROLL-AWARE NAVIGATION
-  // ============================================
-  var lastScroll = 0;
-  var navbar = document.querySelector('.navbar');
-
-  if (navbar) {
-    window.addEventListener('scroll', function () {
-      var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll <= 0) return;
-      if (currentScroll > lastScroll && currentScroll > 80) {
-        navbar.style.transform = 'translateY(-100%)';
-      } else if (currentScroll < lastScroll) {
-        navbar.style.transform = 'translateY(0)';
-      }
-      lastScroll = currentScroll;
-    }, { passive: true });
-  }
-
-  // ============================================
-  // BANNER FADE ON SCROLL
-  // ============================================
-  var banner = document.querySelector('#banner .full-bg-img');
-  if (banner) {
-    window.addEventListener('scroll', function () {
-      var scroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (scroll < window.innerHeight) {
-        banner.style.opacity = Math.max(0.3, 1 - scroll / 600);
-      }
-    }, { passive: true });
-  }
-
-  // ============================================
   // STATS COUNTS (from DOM)
   // ============================================
   function updateStats() {
