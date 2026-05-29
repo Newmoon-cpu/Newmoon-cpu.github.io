@@ -1,4 +1,4 @@
-/* === BrightNewMoon — Acrylic Glass Design System === */
+/* === BrightNewMoon — Unified Full-Page Background Design === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ============================================
@@ -8,106 +8,94 @@
   --sans: 'Inter', system-ui, -apple-system, sans-serif;
   --mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 
-  /* Light — acrylic glass */
-  --glass-bg: rgba(255, 255, 255, 0.58);
-  --glass-border: rgba(255, 255, 255, 0.35);
-  --glass-shadow: 0 2px 16px rgba(0,0,0,.06);
-  --glass-hover: rgba(255, 255, 255, 0.72);
+  /* Light acrylic */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-hover: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255,255,255,.3);
+  --nav-bg: rgba(255, 255, 255, 0.50);
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-hover: rgba(255, 255, 255, 0.80);
 
-  --card-bg: rgba(255, 255, 255, 0.62);
-  --card-hover: rgba(255, 255, 255, 0.78);
-  --nav-bg: rgba(255, 255, 255, 0.52);
-
-  --text: #1a1a1e;
-  --text-secondary: #555;
-  --text-muted: #999;
-  --border-subtle: rgba(0,0,0,.08);
+  --text: #18181b;
+  --text-sec: #52525b;
+  --text-muted: #a1a1aa;
+  --divider: rgba(0,0,0,.07);
   --accent: #6366f1;
-  --accent-glow: rgba(99,102,241,.12);
+  --accent-soft: rgba(99,102,241,.10);
 
-  --radius-sm: 6px;
-  --radius: 12px;
+  --radius: 14px;
   --radius-lg: 18px;
-  --radius-xl: 24px;
   --radius-full: 999px;
 
-  --shadow-sm: 0 1px 4px rgba(0,0,0,.05);
-  --shadow: 0 4px 20px rgba(0,0,0,.08);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.05);
+  --shadow: 0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.11);
 
   --ease: cubic-bezier(.4,0,.2,1);
   --fast: 150ms;
   --normal: 280ms;
-  --slow: 450ms;
 }
 
-/* Dark — acrylic glass */
 [data-user-color-scheme="dark"] {
-  --glass-bg: rgba(18, 18, 22, 0.58);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 2px 16px rgba(0,0,0,.35);
-  --glass-hover: rgba(18, 18, 22, 0.75);
+  --glass-bg: rgba(14, 14, 18, 0.60);
+  --glass-hover: rgba(14, 14, 18, 0.76);
+  --glass-border: rgba(255,255,255,.07);
+  --nav-bg: rgba(10, 10, 14, 0.52);
+  --card-bg: rgba(16, 16, 20, 0.65);
+  --card-hover: rgba(16, 16, 20, 0.82);
 
-  --card-bg: rgba(24, 24, 28, 0.62);
-  --card-hover: rgba(24, 24, 28, 0.80);
-  --nav-bg: rgba(12, 12, 14, 0.55);
-
-  --text: #eeeef0;
-  --text-secondary: #9898a2;
-  --text-muted: #5c5c68;
-  --border-subtle: rgba(255,255,255,.06);
+  --text: #eeeef2;
+  --text-sec: #a0a0a8;
+  --text-muted: #5e5e68;
+  --divider: rgba(255,255,255,.06);
   --accent: #818cf8;
-  --accent-glow: rgba(129,140,248,.14);
+  --accent-soft: rgba(129,140,248,.12);
 
-  --shadow-sm: 0 1px 4px rgba(0,0,0,.3);
-  --shadow: 0 4px 20px rgba(0,0,0,.5);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.6);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --shadow: 0 4px 16px rgba(0,0,0,.45);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.55);
 }
 
 /* ============================================
-   BASE
+   BASE + FULL-PAGE BACKGROUND
    ============================================ */
+html, body {
+  min-height: 100vh;
+}
+
 body {
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.7;
   color: var(--text);
-  background: var(--text-muted);
   -webkit-font-smoothing: antialiased;
   letter-spacing: -.005em;
+
+  /* === UNIFIED FULL-PAGE BACKGROUND === */
+  background:
+    url('/img/banner.webp') no-repeat center center fixed;
+  background-size: cover;
+
+  /* Fallback gradient if image fails */
+  background-color: #0d1117;
 }
 
 ::selection { background: var(--accent); color: #fff; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: none; }
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
 
 /* ============================================
-   BODY BACKGROUND — moon image fallback gradient
-   ============================================ */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse 80% 50% at 70% 30%, rgba(99,102,241,.08) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(129,140,248,.05) 0%, transparent 55%),
-    linear-gradient(175deg, #0d1117 0%, #161b22 30%, #1a1f2e 60%, #141820 100%);
-}
-
-/* Override with user's banner image if set (body bg is dark gradient, banner provides the moon) */
-
-/* ============================================
-   NAV — acrylic glass
+   NAV — acrylic, lets background through
    ============================================ */
 .navbar {
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: var(--nav-bg) !important;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--glass-border);
   box-shadow: none !important;
   padding: 6px 0;
 }
@@ -122,7 +110,7 @@ body::before {
 .navbar .nav-link {
   font-size: .85rem;
   font-weight: 500;
-  color: var(--text-secondary) !important;
+  color: var(--text-sec) !important;
   padding: 6px 15px !important;
   border-radius: var(--radius-full);
   transition: all var(--fast) var(--ease);
@@ -130,65 +118,69 @@ body::before {
 
 .navbar .nav-link:hover {
   color: var(--text) !important;
-  background: rgba(128,128,128,.1);
+  background: rgba(255,255,255,.08);
 }
 
 /* ============================================
-   BANNER — hero with moon video
+   BANNER — just text over full-page bg
    ============================================ */
+.header-inner { height: auto !important; }
+
 #banner {
-  position: relative;
-  overflow: hidden;
+  background: transparent !important;
 }
 
-#banner > video {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-/* Banner content stays above video */
 #banner .full-bg-img {
-  position: relative;
-  z-index: 1;
+  background: transparent !important;
 }
 
 #banner .mask {
   backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 80px 0 40px;
 }
 
 #banner .banner-text .h2 {
   font-family: var(--sans);
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 700;
   letter-spacing: -.03em;
-  text-shadow: 0 2px 20px rgba(0,0,0,.5);
+  text-shadow: 0 2px 24px rgba(0,0,0,.45);
+  color: #fff;
+}
+
+#banner .banner-text #subtitle {
+  color: rgba(255,255,255,.90);
+}
+
+#banner .post-meta {
+  color: rgba(255,255,255,.70);
 }
 
 #banner .scroll-down-bar { display: none; }
 
 /* ============================================
-   CONTENT BOARD — raised above background
+   BOARD — floats up over bg
    ============================================ */
 #board {
-  margin-top: -32px !important;
+  margin-top: -20px !important;
+  padding-bottom: 80px;
   position: relative;
   z-index: 2;
-  padding-bottom: 80px;
 }
 
 /* ============================================
-   POST CARDS — magazine acrylic cards
+   POST CARDS — glass on top of bg
    ============================================ */
 .index-card {
   background: var(--card-bg);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 0 !important;
-  margin-bottom: 20px;
-  box-shadow: var(--glass-shadow);
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
   transition: transform var(--normal) var(--ease),
               box-shadow var(--normal) var(--ease),
               background var(--normal) var(--ease);
@@ -196,28 +188,26 @@ body::before {
 }
 
 .index-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
   background: var(--card-hover);
 }
 
 .index-info {
-  padding: 28px 32px !important;
+  padding: 28px 34px !important;
 }
 
-/* If article has cover image */
 .index-card .index-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .index-header {
-  font-size: 1.25rem;
+  font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: -.02em;
-  line-height: 1.35;
+  line-height: 1.38;
   margin-bottom: 8px;
 }
 
@@ -225,13 +215,13 @@ body::before {
 .index-header a:hover { color: var(--accent); }
 
 .index-excerpt {
-  color: var(--text-secondary);
+  color: var(--text-sec);
   font-size: .9rem;
   line-height: 1.65;
   display: block;
 }
 
-.index-excerpt:hover { text-decoration: none; color: var(--text-secondary); }
+.index-excerpt:hover { text-decoration: none; color: var(--text-sec); }
 
 .post-metas {
   margin-top: 16px;
@@ -252,13 +242,13 @@ body::before {
 
 .post-metas .post-meta a {
   display: inline-block;
-  background: rgba(128,128,128,.08);
-  color: var(--text-secondary);
+  background: rgba(128,128,128,.1);
+  color: var(--text-sec);
   padding: 3px 12px;
   border-radius: var(--radius-full);
   font-size: .75rem;
   font-weight: 500;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid transparent;
   transition: all var(--fast) var(--ease);
 }
 
@@ -279,11 +269,7 @@ body::before {
   max-width: 700px;
 }
 
-.markdown-body {
-  font-family: var(--sans);
-  color: var(--text);
-  background: transparent !important;
-}
+.markdown-body { font-family: var(--sans); color: var(--text); background: transparent !important; }
 
 .markdown-body h1, .markdown-body h2, .markdown-body h3,
 .markdown-body h4, .markdown-body h5, .markdown-body h6,
@@ -296,38 +282,38 @@ body::before {
 }
 
 .post-content h2, .markdown-body h2 {
-  font-size: 1.55rem;
-  margin-top: 52px;
-  margin-bottom: 18px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-subtle);
+  font-size: 1.5rem;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--divider);
 }
 
 .post-content h3, .markdown-body h3 {
-  font-size: 1.22rem;
-  margin-top: 38px;
+  font-size: 1.2rem;
+  margin-top: 36px;
 }
 
 .post-content p, .markdown-body p {
-  margin-bottom: 1.3rem;
-  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  line-height: 1.82;
 }
 
 .post-content a, .markdown-body a { color: var(--accent); }
 
-/* Post content card wrapper */
+/* Glass card wrap for post content */
 .post-container .post-content {
   background: var(--card-bg);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 40px 44px;
-  box-shadow: var(--glass-shadow);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ============================================
-   CODE — beautiful blocks
+   CODE
    ============================================ */
 code {
   font-family: var(--mono);
@@ -342,12 +328,12 @@ code {
 pre code { background: none; color: inherit; padding: 0; font-weight: 400; }
 
 figure.highlight {
-  background: rgba(10,10,14,.92);
+  background: rgba(10,10,16,.94);
   border: 1px solid rgba(255,255,255,.06);
   border-radius: var(--radius);
   overflow: hidden;
   margin: 32px 0;
-  box-shadow: none;
+  backdrop-filter: blur(8px);
 }
 
 figure.highlight .code pre {
@@ -363,7 +349,7 @@ figcaption {
   padding: 8px 16px;
   font-size: .75rem;
   font-family: var(--mono);
-  color: #666;
+  color: #777;
 }
 
 /* ============================================
@@ -375,7 +361,7 @@ figcaption {
   padding: 14px 22px;
   margin: 28px 0;
   border-radius: 0 var(--radius) var(--radius) 0;
-  color: var(--text-secondary);
+  color: var(--text-sec);
   font-style: italic;
 }
 
@@ -394,8 +380,8 @@ figcaption {
    ============================================ */
 #scroll-top-button {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
   box-shadow: var(--shadow);
@@ -415,41 +401,40 @@ figcaption {
   border-color: var(--accent);
 }
 
-#scroll-top-button i { color: var(--text-secondary); }
+#scroll-top-button i { color: var(--text-sec); }
 
 /* ============================================
    SEARCH MODAL
    ============================================ */
 .modal-content {
   background: var(--card-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
 
 .modal-header {
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--divider);
   padding: 18px 24px;
 }
 
 .modal-header .modal-title { color: var(--text); font-weight: 600; }
-.modal-header .close { color: var(--text-secondary); text-shadow: none; opacity: .6; }
+.modal-header .close { color: var(--text-sec); text-shadow: none; opacity: .6; }
 
 #local-search-input {
   font-family: var(--sans);
   background: rgba(128,128,128,.08);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full) !important;
-  padding: 10px 20px !important;
+  border: 1px solid var(--divider);
   color: var(--text);
   font-size: .9rem;
+  padding: 10px 20px !important;
 }
 
 #local-search-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  box-shadow: 0 0 0 3px var(--accent-soft);
   outline: none;
 }
 
@@ -476,7 +461,7 @@ figcaption {
   border-radius: var(--radius-full);
   font-size: .85rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-sec);
   transition: all var(--fast) var(--ease);
 }
 
@@ -484,11 +469,11 @@ figcaption {
 .pagination .current { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 /* ============================================
-   ARCHIVE / TAG PAGES
+   ARCHIVE / TAG
    ============================================ */
 .archive-item {
   padding: 18px 0;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--divider);
   transition: padding var(--fast) var(--ease);
   display: flex;
   justify-content: space-between;
@@ -496,17 +481,9 @@ figcaption {
 }
 
 .archive-item:hover { padding-left: 12px; }
-
 .archive-item a { color: var(--text); font-weight: 500; font-size: 1rem; }
 .archive-item a:hover { color: var(--accent); }
-
-.archive-item time {
-  font-family: var(--mono);
-  font-size: .78rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  margin-left: 16px;
-}
+.archive-item time { font-family: var(--mono); font-size: .78rem; color: var(--text-muted); white-space: nowrap; }
 
 /* ============================================
    ABOUT PAGE
@@ -518,7 +495,7 @@ figcaption {
 }
 
 .about-name { font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em; color: var(--text); }
-.about-intro { color: var(--text-secondary); }
+.about-intro { color: var(--text-sec); }
 
 .about-icons a {
   display: inline-flex;
@@ -527,34 +504,29 @@ figcaption {
   width: 40px;
   height: 40px;
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
-  color: var(--text-secondary);
+  color: var(--text-sec);
   transition: all var(--fast) var(--ease);
   margin: 0 4px;
 }
 
-.about-icons a:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
+.about-icons a:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
 
 /* ============================================
    FOOTER
    ============================================ */
 footer {
-  border-top: 1px solid var(--border-subtle);
-  padding: 32px 0;
+  border-top: 1px solid var(--glass-border);
+  padding: 36px 0;
   background: var(--card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .footer-inner { text-align: center; font-size: .82rem; color: var(--text-muted); }
-.footer-content a { color: var(--text-secondary); }
+.footer-content a { color: var(--text-sec); }
 .footer-content a:hover { color: var(--accent); }
 .footer-content .iconfont { color: var(--accent); font-size: .8rem; }
 
@@ -562,23 +534,23 @@ footer {
    NPROGRESS
    ============================================ */
 #nprogress .bar { background: var(--accent) !important; height: 2px !important; }
-#nprogress .peg { box-shadow: 0 0 10px var(--accent), 0 0 5px var(--accent) !important; }
+#nprogress .peg { box-shadow: 0 0 12px var(--accent),0 0 6px var(--accent) !important; }
 
 /* ============================================
    TOC
    ============================================ */
-.tocbot-link { color: var(--text-secondary) !important; }
+.tocbot-link { color: var(--text-sec) !important; }
 .tocbot-link:hover { color: var(--accent) !important; }
 .tocbot-active-link { color: var(--accent) !important; font-weight: 600 !important; }
 
 /* ============================================
-   MOBILE GRID
+   MOBILE
    ============================================ */
-.mobile-grid-menu-inner { background: var(--card-bg) !important; backdrop-filter: blur(24px); border-bottom: 1px solid var(--border-subtle); }
-.mobile-grid-item { color: var(--text-secondary) !important; }
+.mobile-grid-menu-inner { background: var(--card-bg) !important; backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+.mobile-grid-item { color: var(--text-sec) !important; }
 
 /* ============================================
-   ARTICLE NAV (prev/next)
+   POST NAVIGATION
    ============================================ */
 .post-navigation {
   display: flex;
@@ -590,38 +562,36 @@ footer {
 .post-navigation a {
   flex: 1;
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   padding: 16px 20px;
-  color: var(--text-secondary);
+  color: var(--text-sec);
   font-size: .9rem;
   transition: all var(--fast) var(--ease);
 }
 
-.post-navigation a:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-  text-decoration: none;
-}
+.post-navigation a:hover { border-color: var(--accent); box-shadow: var(--shadow); text-decoration: none; }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  #banner .banner-text .h2 { font-size: 1.6rem; }
-  #board { margin-top: -24px !important; }
+  #banner .banner-text .h2 { font-size: 1.8rem; }
+  #banner .mask { padding: 50px 0 24px; }
+  #board { margin-top: -12px !important; }
   .index-info { padding: 20px 18px !important; }
-  .index-header { font-size: 1.1rem; }
+  .index-header { font-size: 1.08rem; }
   .post-content { font-size: .95rem; }
-  .post-container .post-content { padding: 24px 20px; }
+  .post-container .post-content { padding: 24px 18px; }
   .post-content h2, .markdown-body h2 { font-size: 1.3rem; margin-top: 36px; }
   .post-navigation { flex-direction: column; }
 }
 
 @media print {
+  body { background: #fff !important; color: #000; }
   .navbar, footer, #scroll-top-button, #banner, .pagination, .post-navigation { display: none !important; }
-  body { background: #fff; color: #000; }
+  .index-card, .post-container .post-content { background: #fff; border: 1px solid #ddd; backdrop-filter: none; box-shadow: none; }
 }
 
 /* ============================================
@@ -632,27 +602,14 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.index-card { animation: fadeUp .5s var(--ease) both; }
+.index-card { animation: fadeUp .45s var(--ease) both; }
 .index-card:nth-child(1)  { animation-delay: 0s; }
-.index-card:nth-child(2)  { animation-delay: .08s; }
-.index-card:nth-child(3)  { animation-delay: .16s; }
-.index-card:nth-child(4)  { animation-delay: .24s; }
-.index-card:nth-child(5)  { animation-delay: .32s; }
-.index-card:nth-child(6)  { animation-delay: .40s; }
-.index-card:nth-child(7)  { animation-delay: .48s; }
-.index-card:nth-child(8)  { animation-delay: .56s; }
-.index-card:nth-child(9)  { animation-delay: .64s; }
-.index-card:nth-child(10) { animation-delay: .72s; }
-
-/* ============================================
-   READING PROGRESS BAR
-   ============================================ */
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: var(--accent);
-  z-index: 9999;
-  transition: width 100ms linear;
-}
+.index-card:nth-child(2)  { animation-delay: .07s; }
+.index-card:nth-child(3)  { animation-delay: .14s; }
+.index-card:nth-child(4)  { animation-delay: .21s; }
+.index-card:nth-child(5)  { animation-delay: .28s; }
+.index-card:nth-child(6)  { animation-delay: .35s; }
+.index-card:nth-child(7)  { animation-delay: .42s; }
+.index-card:nth-child(8)  { animation-delay: .49s; }
+.index-card:nth-child(9)  { animation-delay: .56s; }
+.index-card:nth-child(10) { animation-delay: .63s; }
