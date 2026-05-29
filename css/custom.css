@@ -71,15 +71,64 @@
 
 /* ============================================
    4-POINTED STAR CURSOR — white, global
+   Chain: html → body → containers → children
    ============================================ */
-body {
+html {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cpath d='M11 0l2.1 7.3L21 9.8l-7.9 2.2L11 20l-2.1-8L1 9.8l7.9-2.5z' fill='white' opacity='0.9'/%3E%3C/svg%3E") 11 11, auto;
 }
 
-a, button, .btn, .nav-link, .navbar-toggler,
+body {
+  cursor: inherit;
+}
+
+/* Force major containers to inherit — overrides Bootstrap/theme cursor resets */
+.navbar,
+.header-inner,
+#banner,
+#banner .full-bg-img,
+#banner .mask,
+#banner .banner-text,
+#banner .h2,
+#banner #subtitle,
+.hero-profile,
+.scroll-indicator,
+main,
+#board,
+.container,
+.row,
+[class*="col-"],
+.index-info,
+.index-excerpt,
+.index-header,
+.post-metas,
+.post-content,
+.markdown-body,
+footer,
+.footer-inner,
+.footer-content,
+.mobile-grid-menu-inner,
+.mobile-grid-cell,
+.modal-content,
+.modal-header,
+.modal-body,
+.archive-item,
+.tagcloud,
+.pagination,
+.about-avatar,
+.about-name,
+.about-intro,
+.stat-item,
+.stat-value,
+.stat-label,
+#local-search-result,
+.list-group {
+  cursor: inherit;
+}
+
+a, button, .btn, .navbar-toggler,
 .index-card, .page-number, .extend,
 #scroll-top-button, .modal .close, input[type="submit"],
-.mobile-grid-cell a, .scroll-indicator {
+.mobile-grid-cell a {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l2.3 8L24 10.8l-9.7 2.7L12 23l-2.3-9.5L0 10.8l9.7-2.8z' fill='white' opacity='0.95'/%3E%3C/svg%3E") 12 12, pointer !important;
 }
 
