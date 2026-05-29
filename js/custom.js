@@ -296,15 +296,52 @@
   }
 
   // ============================================
+  // FOOTER ENHANCEMENT
+  // ============================================
+  function enhanceFooter() {
+    var footerContent = document.querySelector('.footer-content');
+    if (!footerContent) return;
+
+    var startYear = 2026;
+    var currentYear = new Date().getFullYear();
+    var yearText = startYear === currentYear ? String(startYear) : startYear + ' - ' + currentYear;
+
+    var wrapper = document.createElement('div');
+    wrapper.className = 'footer-enhanced';
+    wrapper.innerHTML =
+      '<div class="footer-copyright">&copy; ' + yearText + ' BrightNewMoon. All rights reserved.</div>' +
+      '<div class="footer-runtime">' +
+        '<span class="footer-dot"></span>' +
+        '已运行 <strong id="footer-runtime">--</strong>' +
+      '</div>';
+
+    footerContent.parentNode.insertBefore(wrapper, footerContent.nextSibling);
+  }
+
+  function updateFooterRuntime() {
+    var el = document.getElementById('footer-runtime');
+    if (!el) return;
+    var now = new Date();
+    var diff = now - startDate;
+    var days = Math.floor(diff / 86400000);
+    el.textContent = days + ' 天';
+  }
+
+  // ============================================
   // INIT
   // ============================================
   function init() {
     injectProfileCard();
     injectScrollIndicator();
     injectStatsRow();
+    enhanceFooter();
     updateRuntime();
     updateStats();
-    setInterval(updateRuntime, 1000);
+    updateFooterRuntime();
+    setInterval(function () {
+      updateRuntime();
+      updateFooterRuntime();
+    }, 1000);
   }
 
   if (document.readyState === 'loading') {

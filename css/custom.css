@@ -846,7 +846,7 @@ figcaption {
    ============================================ */
 footer {
   border-top: 1px solid var(--border);
-  padding: 34px 0;
+  padding: 28px 0;
   background: var(--glass-sm);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -856,6 +856,139 @@ footer {
 .footer-content a { color: var(--text-sec); }
 .footer-content a:hover { color: var(--accent); }
 .footer-content .iconfont { color: var(--accent); }
+
+.footer-enhanced {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-copyright { opacity: 0.65; }
+
+.footer-runtime {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.footer-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34,197,94,0.4);
+  animation: footerPulse 3s ease-in-out infinite;
+}
+
+@keyframes footerPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.footer-runtime strong {
+  font-weight: 600;
+  color: var(--text-sec);
+}
+
+/* ============================================
+   404 PAGE
+   ============================================ */
+.notfound-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.notfound-code {
+  font-size: 8rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.notfound-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.notfound-desc {
+  color: var(--text-sec);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 400px;
+}
+
+.notfound-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.notfound-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: all var(--fast) var(--ease);
+}
+
+.notfound-btn-home {
+  background: var(--accent);
+  color: #fff !important;
+}
+
+.notfound-btn-home:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.notfound-btn-archives {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  color: var(--text-sec) !important;
+}
+
+.notfound-btn-archives:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+.notfound-auto-redirect {
+  margin-top: 28px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.notfound-countdown {
+  font-weight: 600;
+  color: var(--accent);
+}
 
 /* ============================================
    NPROGRESS / TOC
@@ -1046,7 +1179,6 @@ footer {
   border: 1px solid var(--divider);
 }
 
-.skill-icon { color: var(--accent); margin-right: 6px; }
 
 .about-contact-list {
   list-style: none;
