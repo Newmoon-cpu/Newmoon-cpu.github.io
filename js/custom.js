@@ -113,30 +113,56 @@
   // ============================================
   // METEOR TRAIL ON MOUSEMOVE
   // ============================================
-  var meteorThrottle = 0;
+  var _trailLastX = 0;
+  var _trailLastY = 0;
+  var _trailInit = false;
 
   function createMeteorParticle(x, y) {
     var dot = document.createElement('div');
     dot.className = 'meteor-particle';
-    var size = 2 + Math.random() * 4;
+    var size = 2 + Math.random() * 3;
     dot.style.left = x + 'px';
     dot.style.top = y + 'px';
     dot.style.width = size + 'px';
     dot.style.height = size + 'px';
-    document.body.appendChild(dot);
+    // Append to <html> not <body> — avoids Chrome fixed-position offset bug
+    // when body has overflow-x: hidden + height: 100%
+    document.documentElement.appendChild(dot);
 
-    // Clean up after animation
     setTimeout(function () {
       if (dot.parentNode) dot.parentNode.removeChild(dot);
     }, 850);
   }
 
-  document.addEventListener('mousemove', function (e) {
-    var now = Date.now();
-    if (now - meteorThrottle < 28) return;
-    meteorThrottle = now;
+  function spawnTrailParticles(x, y) {
+    if (!_trailInit) {
+      _trailLastX = x;
+      _trailLastY = y;
+      _trailInit = true;
+      createMeteorParticle(x, y);
+      return;
+    }
 
-    createMeteorParticle(e.clientX + (Math.random() - 0.5) * 6, e.clientY + (Math.random() - 0.5) * 6);
+    var dx = x - _trailLastX;
+    var dy = y - _trailLastY;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    var steps = Math.max(1, Math.floor(dist / 6));
+    var stepX = dx / steps;
+    var stepY = dy / steps;
+
+    for (var i = 0; i < steps; i++) {
+      createMeteorParticle(
+        _trailLastX + stepX * i + (Math.random() - 0.5) * 4,
+        _trailLastY + stepY * i + (Math.random() - 0.5) * 4
+      );
+    }
+
+    _trailLastX = x;
+    _trailLastY = y;
+  }
+
+  document.addEventListener('mousemove', function (e) {
+    spawnTrailParticles(e.clientX, e.clientY);
   }, { passive: true });
 
   // ============================================
@@ -166,7 +192,7 @@
     span.style.color = randomStarColor();
     span.style.fontSize = (12 + Math.random() * 16) + 'px';
 
-    document.body.appendChild(span);
+    document.documentElement.appendChild(span);
 
     setTimeout(function () {
       if (span.parentNode) span.parentNode.removeChild(span);
