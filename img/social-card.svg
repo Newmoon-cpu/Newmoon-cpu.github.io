@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#1a1033"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1000" cy="150" r="300" fill="rgba(124,58,237,0.08)"/>
+  <circle cx="200" cy="500" r="200" fill="rgba(167,139,250,0.06)"/>
+  <text x="80" y="280" font-family="sans-serif" font-size="52" font-weight="bold" fill="white">BrightNewMoon</text>
+  <text x="80" y="350" font-family="sans-serif" font-size="28" fill="#a8a8b8">探索技术，记录生活</text>
+  <line x1="80" y1="400" x2="320" y2="400" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+  <text x="80" y="460" font-family="monospace" font-size="18" fill="#606070">brightnewmoon.top</text>
+</svg>

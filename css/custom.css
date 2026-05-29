@@ -1259,23 +1259,142 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+/* Tablet — hide profile card, center banner */
 @media (max-width: 992px) {
   .hero-profile { display: none; }
   #banner .mask { justify-content: center; }
   #banner .banner-text { text-align: center; }
+  .side-col { display: none !important; }
+  .col-lg-8 { flex: 0 0 100%; max-width: 100%; }
 }
 
+/* Phone landscape / small tablet */
 @media (max-width: 768px) {
-  #banner .banner-text .h2 { font-size: 2rem; }
-  #banner .mask { padding: 40px 20px 60px; }
-  #banner .banner-text #subtitle { font-size: 0.9rem; padding: 6px 14px; }
-  #board { margin-top: -30px !important; }
-  .index-info { padding: 20px 18px !important; }
-  .index-header { font-size: 1.1rem; }
-  .post-content { font-size: 0.95rem; }
-  .post-container .post-content { padding: 24px 18px; }
-  .post-content h2, .markdown-body h2 { font-size: 1.3rem; margin-top: 36px; }
+  /* Banner */
+  #banner { height: 42vh !important; min-height: 280px !important; }
+  .header-inner { height: 42vh !important; min-height: 280px !important; }
+  #banner .banner-text .h2 { font-size: 1.75rem; }
+  #banner .banner-text #subtitle { font-size: 0.85rem; padding: 5px 12px; }
+  #banner .mask { padding: 30px 16px 50px; }
+
+  /* Navbar — compact */
+  .navbar { padding: 6px 12px; }
+  .navbar-brand { font-size: 0.95rem; }
+  .navbar .nav-link { padding: 6px 10px; font-size: 0.82rem; }
+  .navbar-collapse { background: var(--nav-glass); backdrop-filter: blur(24px); border-radius: var(--radius); padding: 10px; margin-top: 8px; }
+
+  /* Board */
+  #board { margin-top: -28px !important; padding: 0 8px; }
+
+  /* Index cards */
+  .index-card { margin: 0 4px 16px; }
+  .index-info { padding: 18px 14px !important; }
+  .index-header { font-size: 1.05rem; }
+  .index-excerpt { font-size: 0.85rem; line-height: 1.6; }
+
+  /* Post page */
+  .post-content { font-size: 0.93rem; }
+  .post-container .post-content { padding: 20px 14px; border-radius: var(--radius-sm); }
+  .post-content h2, .markdown-body h2 { font-size: 1.22rem; margin-top: 32px; }
+  .post-content h3, .markdown-body h3 { font-size: 1.05rem; margin-top: 28px; }
   .post-prevnext { flex-direction: column; }
+  .post-prevnext a { padding: 14px 18px; font-size: 0.82rem; }
+
+  /* Code blocks — full width, smaller font */
+  figure.highlight { margin: 20px -4px; border-radius: 8px; }
+  figure.highlight .code pre { font-size: 0.75rem; line-height: 1.55; padding: 14px 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  figcaption { font-size: 0.7rem; padding: 6px 12px; }
+
+  /* Tables — horizontal scroll */
+  .markdown-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 0.8rem; }
+  .markdown-body th, .markdown-body td { padding: 8px 10px; white-space: nowrap; }
+
+  /* Blockquotes */
+  .markdown-body blockquote, .post-content blockquote { padding: 12px 16px; margin: 20px 0; font-size: 0.88rem; }
+
+  /* License box */
+  .license-box { padding: 14px 16px; font-size: 0.76rem; }
+  .license-meta { gap: 8px 16px; }
+
+  /* Footer */
+  footer { padding: 24px 12px; font-size: 0.78rem; }
+  .footer-enhanced { flex-direction: column; gap: 6px; }
+
+  /* TOC sidebar — hidden on mobile */
+  .sidebar { display: none; }
+
+  /* Back to top — smaller, right edge */
+  #scroll-top-button { width: 36px; height: 36px; bottom: 16px; right: 12px; }
+
+  /* Category page */
+  .category-item { padding: 12px 16px !important; font-size: 0.9rem; }
+  .category-post-list { margin-left: 12px; }
+
+  /* Tags page */
+  .tagcloud { text-align: center; }
+  .tagcloud a { padding: 4px 13px; margin: 3px; font-size: 13px !important; }
+
+  /* 404 page */
+  .notfound-wrap { padding: 40px 20px; }
+  .notfound-code { font-size: 5rem; }
+  .notfound-links { flex-direction: column; align-items: center; }
+  .notfound-btn-home, .notfound-btn-archives { width: 100%; max-width: 220px; text-align: center; }
+
+  /* About page */
+  .about-hero-name { font-size: 1.5rem; }
+  .about-section { padding: 16px 12px; }
+
+  /* Projects page */
+  .project-card { padding: 20px 18px; }
+  .project-header h2 { font-size: 1.05rem; }
+
+  /* Resume page */
+  .resume-wrap { padding: 12px 0; }
+  .resume-wrap h2 { font-size: 1.3rem; margin-top: 36px; }
+
+  /* Stats row */
+  .stats-row { gap: 10px; padding: 14px 10px; }
+  .stat-value { font-size: 1.1rem; }
+  .stat-label { font-size: 0.68rem; }
+
+  /* Profile card (hidden anyway at this breakpoint) */
+  .hero-profile { display: none; }
+  .scroll-indicator { bottom: 12px; }
+
+  /* Search modal */
+  .modal-dialog { margin: 10px; }
+  .modal-body { padding: 12px; }
+
+  /* Canvas — lower z-index stacking on mobile */
+  #fx-canvas { opacity: 0.5; }
+}
+
+/* Phone portrait */
+@media (max-width: 480px) {
+  #banner { height: 38vh !important; min-height: 240px !important; }
+  .header-inner { height: 38vh !important; min-height: 240px !important; }
+  #banner .banner-text .h2 { font-size: 1.5rem; }
+  #banner .banner-text #subtitle { font-size: 0.78rem; }
+
+  .navbar { padding: 4px 8px; }
+  .navbar-brand { font-size: 0.88rem; }
+
+  #board { margin-top: -24px !important; padding: 0 4px; }
+
+  .index-card { margin: 0 2px 12px; }
+  .index-info { padding: 14px 10px !important; }
+  .index-header { font-size: 0.98rem; }
+
+  .post-container .post-content { padding: 16px 10px; }
+  .post-content { font-size: 0.88rem; }
+
+  .post-content h2, .markdown-body h2 { font-size: 1.12rem; }
+  .post-content h3, .markdown-body h3 { font-size: 0.98rem; }
+
+  figure.highlight .code pre { font-size: 0.7rem; padding: 10px 8px; }
+
+  .notfound-code { font-size: 4rem; }
 }
 
 /* ============================================
