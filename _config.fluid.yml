@@ -385,8 +385,10 @@ navbar:
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "projects", link: "/projects/", icon: "iconfont icon-project-fill" }
+    - { key: "timeline", link: "/timeline/", icon: "iconfont icon-time-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -500,9 +502,9 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img:
-  banner_img_height: 0
-  banner_mask_alpha: 0
+  banner_img: /img/banner.webp
+  banner_img_height: 55
+  banner_mask_alpha: 0.25
   slogan:
     enable: true
 
@@ -561,9 +563,9 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img:
-  banner_img_height: 0
-  banner_mask_alpha: 0
+  banner_img: /img/banner.webp
+  banner_img_height: 35
+  banner_mask_alpha: 0.3
 
   # 文章在首页的默认封面图，当没有指定 index_img 时会使用该图片，若两者都为空则不显示任何图片
   # Path of the default post cover when `index_img` is not set. If both are empty, no image will be displayed

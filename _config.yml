@@ -98,6 +98,21 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: fluid
 
+# SEO
+sitemap:
+  path: sitemap.xml
+robotstxt:
+  user_agent: '*'
+  allow: /
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+# Reading progress bar
+reading_progress:
+  enable: true
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
