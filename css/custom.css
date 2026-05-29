@@ -1093,27 +1093,159 @@ footer {
 
 .mobile-grid-item { color: var(--text-sec) !important; }
 
-.post-navigation {
+/* Post prev/next navigation */
+.post-prevnext {
   display: flex;
-  justify-content: space-between;
   gap: 16px;
-  margin-top: 48px;
+  margin-top: 40px;
 }
 
-.post-navigation a {
+.post-prevnext .post-prev,
+.post-prevnext .post-next {
   flex: 1;
-  background: var(--glass);
-  backdrop-filter: blur(16px);
+  max-width: none;
+  padding: 0;
+}
+
+.post-prevnext a {
+  display: block;
+  background: var(--glass-xs);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 16px 22px;
   color: var(--text-sec);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
+  transition: all var(--fast) var(--ease);
+  text-decoration: none;
+}
+
+.post-prevnext a:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.post-prevnext .post-prev a::before { content: '← '; }
+.post-prevnext .post-next a::after { content: ' → '; }
+
+/* Markdown tables */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 10px 16px;
+  border: 1px solid var(--divider);
+  text-align: left;
+}
+
+.markdown-body th {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.markdown-body tr:nth-child(even) td {
+  background: rgba(128,128,128,0.03);
+}
+
+/* Post banner meta polish */
+#banner .post-meta {
+  font-size: 0.84rem;
+  opacity: 0.85;
+}
+
+#banner .post-meta + .post-meta { margin-left: 16px; }
+
+/* SEO header — visually hidden but accessible */
+#seo-header {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* End-of-article decoration */
+.post-content hr:last-of-type {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+  margin: 48px 0 32px;
+  opacity: 0.5;
+}
+
+/* Post-end share row */
+.post-end-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--glass-xs);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.post-end-share span { opacity: 0.6; }
+
+.post-end-share a {
+  color: var(--text-sec);
+  font-size: 1.15rem;
+  padding: 6px 10px;
+  border-radius: 6px;
   transition: all var(--fast) var(--ease);
 }
 
-.post-navigation a:hover { border-color: var(--accent); box-shadow: var(--shadow); text-decoration: none; }
+.post-end-share a:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
+/* Code copy button enhancement */
+.copy-btn {
+  transition: all var(--fast) var(--ease) !important;
+}
+
+.copy-btn.copied {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+#banner .post-meta + .post-meta { margin-left: 16px; }
+
+/* SEO header — visually hidden but accessible */
+#seo-header {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
 
 /* Canvas FX overlay — meteor trail + star particles rendered via 2D context */
 #fx-canvas {
@@ -1143,7 +1275,7 @@ footer {
   .post-content { font-size: 0.95rem; }
   .post-container .post-content { padding: 24px 18px; }
   .post-content h2, .markdown-body h2 { font-size: 1.3rem; margin-top: 36px; }
-  .post-navigation { flex-direction: column; }
+  .post-prevnext { flex-direction: column; }
 }
 
 /* ============================================
@@ -1481,7 +1613,7 @@ footer {
    ============================================ */
 @media print {
   body { background: #fff !important; color: #000; cursor: auto !important; }
-  .navbar, footer, #scroll-top-button, #banner, .pagination, .post-navigation,
+  .navbar, footer, #scroll-top-button, #banner, .pagination, .post-prevnext,
   #fx-canvas, .hero-profile, .scroll-indicator { display: none !important; }
   .index-card, .post-container .post-content { background: #fff; border: 1px solid #ddd; backdrop-filter: none; box-shadow: none; }
 }

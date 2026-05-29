@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Hexo + Fluid 博客搭建全攻略</title>
+      <link href="/2026/05/30/hexo-fluid-blog-setup/"/>
+      <url>/2026/05/30/hexo-fluid-blog-setup/</url>
+      
+        <content type="html"><![CDATA[<p>从零开始搭建一个漂亮的个人博客，其实没那么难。</p><h2 id="为什么选择-Hexo-Fluid？"><a href="#为什么选择-Hexo-Fluid？" class="headerlink" title="为什么选择 Hexo + Fluid？"></a>为什么选择 Hexo + Fluid？</h2><ul><li><strong>Hexo</strong> 是最流行的 Node.js 静态博客框架，生态成熟、插件丰富</li><li><strong>Fluid</strong> 是 Material Design 风格的高颜值主题，响应式、暗色模式、丰富配置一应俱全</li><li><strong>GitHub Pages</strong> 提供免费、稳定的托管，支持自定义域名和 HTTPS</li></ul><h2 id="快速起步"><a href="#快速起步" class="headerlink" title="快速起步"></a>快速起步</h2><h3 id="1-安装-Hexo"><a href="#1-安装-Hexo" class="headerlink" title="1. 安装 Hexo"></a>1. 安装 Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br>hexo init blog<br><span class="hljs-built_in">cd</span> blog<br>npm install<br></code></pre></td></tr></table></figure><h3 id="2-安装-Fluid-主题"><a href="#2-安装-Fluid-主题" class="headerlink" title="2. 安装 Fluid 主题"></a>2. 安装 Fluid 主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-theme-fluid --save<br></code></pre></td></tr></table></figure><p>然后在 <code>_config.yml</code> 中设置：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><br></code></pre></td></tr></table></figure><h3 id="3-创建-Fluid-配置文件"><a href="#3-创建-Fluid-配置文件" class="headerlink" title="3. 创建 Fluid 配置文件"></a>3. 创建 Fluid 配置文件</h3><p>复制主题的 <code>_config.yml</code> 到博客根目录并重命名为 <code>_config.fluid.yml</code>，个性化你的设置。</p><h3 id="4-创建第一篇文章"><a href="#4-创建第一篇文章" class="headerlink" title="4. 创建第一篇文章"></a>4. 创建第一篇文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new <span class="hljs-string">&quot;Hello World&quot;</span><br></code></pre></td></tr></table></figure><p>Markdown 文件会生成在 <code>source/_posts/</code> 目录下，直接编辑即可。</p><h2 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h2><p>安装部署插件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure><p>配置 <code>_config.yml</code> 中的部署信息：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/yourname/yourname.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">gh-pages</span><br></code></pre></td></tr></table></figure><p>然后一键部署：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo deploy<br></code></pre></td></tr></table></figure><h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>在 <code>source/</code> 目录下创建 <code>CNAME</code> 文件，写入你的域名。然后在 DNS 服务商添加 CNAME 记录指向 <code>yourname.github.io</code>。</p><h2 id="锦上添花"><a href="#锦上添花" class="headerlink" title="锦上添花"></a>锦上添花</h2><ul><li><strong>Giscus 评论系统</strong> — 基于 GitHub Discussions，免费无广告</li><li><strong>GSAP 动画</strong> — 给页面添加流畅的交互动效</li><li><strong>自定义 404 页面</strong> — 让丢失的访客有个好去处</li></ul><p>搭建博客只是一个开始，坚持写作才是最重要的。祝你博客之旅愉快！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Fluid </tag>
+            
+            <tag> GitHub Pages </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客上线啦！</title>
       <link href="/2026/05/29/hello-world/"/>
       <url>/2026/05/29/hello-world/</url>

@@ -328,6 +328,19 @@
   }
 
   // ============================================
+  // COPY BUTTON FEEDBACK
+  // ============================================
+  function enhanceCodeCopy() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.copy-btn');
+      if (!btn) return;
+      if (btn.classList.contains('copied')) return;
+      btn.classList.add('copied');
+      setTimeout(function () { btn.classList.remove('copied'); }, 1500);
+    });
+  }
+
+  // ============================================
   // INIT
   // ============================================
   function init() {
@@ -335,6 +348,7 @@
     injectScrollIndicator();
     injectStatsRow();
     enhanceFooter();
+    enhanceCodeCopy();
     updateRuntime();
     updateStats();
     updateFooterRuntime();
