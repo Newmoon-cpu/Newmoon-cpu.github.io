@@ -102,6 +102,20 @@
     }
 
     _tl.play();
+
+    // Scroll indicator pulse — starts after entrance
+    _tl.eventCallback('onComplete', function () {
+      var indicator = document.querySelector('.scroll-indicator');
+      if (indicator) {
+        gsap.to(indicator, {
+          y: 8,
+          duration: 1.4,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1
+        });
+      }
+    });
   }
 
   function buildInnerEntrance(full) {

@@ -170,8 +170,7 @@ a:hover { text-decoration: none; }
   box-shadow: none !important;
   padding: 4px 0;
   height: 50px;
-  transition: transform 0.45s var(--ease),
-              background var(--normal) var(--ease);
+  transition: background var(--normal) var(--ease);
 }
 
 .navbar-brand strong {
@@ -187,7 +186,7 @@ a:hover { text-decoration: none; }
   color: var(--text-sec) !important;
   padding: 5px 14px !important;
   border-radius: var(--radius-full);
-  transition: all var(--fast) var(--ease);
+  transition: color var(--fast) var(--ease), background var(--fast) var(--ease);
 }
 
 .navbar .nav-link:hover {
@@ -969,6 +968,13 @@ footer {
   .index-card, .post-container .post-content { background: #fff; border: 1px solid #ddd; backdrop-filter: none; box-shadow: none; }
 }
 
+/* Neutralize Fluid theme's fade-in-up — GSAP handles entrances */
+.banner-text.fade-in-up {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* ============================================
    NAV UNDERLINE (GSAP-driven)
    ============================================ */
@@ -985,7 +991,6 @@ footer {
 
 .navbar .nav-link {
   position: relative;
-  will-change: transform;
 }
 
 /* ============================================

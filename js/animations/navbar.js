@@ -53,8 +53,8 @@
     var active = core.getActiveNavLink();
     if (active) {
       var r = active.getBoundingClientRect();
-      var nr = navbar.getBoundingClientRect();
-      gsap.set(underline, { x: r.left - nr.left, width: r.width, autoAlpha: 0.5 });
+      var cr = container.getBoundingClientRect();
+      gsap.set(underline, { x: r.left - cr.left, width: r.width, autoAlpha: 0.5 });
     }
   }
 
@@ -63,8 +63,8 @@
     links.forEach(function (link) {
       link.addEventListener('mouseenter', function () {
         var r = link.getBoundingClientRect();
-        var nr = navbar.getBoundingClientRect();
-        toX(r.left - nr.left);
+        var cr = container.getBoundingClientRect();
+        toX(r.left - cr.left);
         toW(r.width);
         toO(1);
       });
@@ -74,8 +74,8 @@
       var active = core.getActiveNavLink();
       if (active) {
         var r = active.getBoundingClientRect();
-        var nr = navbar.getBoundingClientRect();
-        toX(r.left - nr.left);
+        var cr = container.getBoundingClientRect();
+        toX(r.left - cr.left);
         toW(r.width);
         toO(0.5);
       } else {
@@ -117,7 +117,7 @@
       yPercent: -100,
       duration: T.duration.fast,
       ease: T.ease.soft,
-      force3D: true
+      force3D: false  // false: navbar has backdrop-filter which creates its own GPU layer
     });
   }
 
@@ -127,7 +127,7 @@
       yPercent: 0,
       duration: T.duration.fast,
       ease: T.ease.soft,
-      force3D: true
+      force3D: false
     });
   }
 
@@ -243,8 +243,8 @@
     var active = core.getActiveNavLink();
     if (active && underline) {
       var r = active.getBoundingClientRect();
-      var nr = navbar ? navbar.getBoundingClientRect() : { left: 0 };
-      gsap.set(underline, { x: r.left - nr.left, width: r.width });
+      var cr = container ? container.getBoundingClientRect() : { left: 0 };
+      gsap.set(underline, { x: r.left - cr.left, width: r.width });
     }
   }
 })();
