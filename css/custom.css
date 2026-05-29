@@ -1231,6 +1231,45 @@ footer {
   color: #fff !important;
 }
 
+/* WeChat QR modal */
+.wechat-qr-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+
+.wechat-qr-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  text-align: center;
+}
+
+.wechat-qr-card img {
+  border-radius: 8px;
+  display: block;
+}
+
+.wechat-qr-card p {
+  margin: 14px 0 0;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.wechat-qr-card button {
+  margin-top: 12px;
+  padding: 6px 24px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 /* Code copy button enhancement */
 .copy-btn {
   transition: all var(--fast) var(--ease) !important;
