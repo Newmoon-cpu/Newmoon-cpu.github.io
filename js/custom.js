@@ -111,106 +111,162 @@
   }
 
   // ============================================
-  // METEOR TRAIL ON MOUSEMOVE
+  // CANVAS OVERLAY — meteor trail + star particles
+  // Canvas bypasses DOM stacking context (backdrop-filter) issues entirely
   // ============================================
-  var _trailLastX = 0;
-  var _trailLastY = 0;
-  var _trailInit = false;
+  var _cv = null;
+  var _ctx = null;
+  var _paused = false;
+  var _trailParts = [];
+  var _starParts = [];
+  var _lastX = 0;
+  var _lastY = 0;
+  var _hasLast = false;
+  var _cvW = 0;
+  var _cvH = 0;
 
-  function createMeteorParticle(x, y) {
-    var dot = document.createElement('div');
-    dot.className = 'meteor-particle';
-    var size = 2 + Math.random() * 3;
-    dot.style.left = x + 'px';
-    dot.style.top = y + 'px';
-    dot.style.width = size + 'px';
-    dot.style.height = size + 'px';
-    // Append to <html> not <body> — avoids Chrome fixed-position offset bug
-    // when body has overflow-x: hidden + height: 100%
-    document.documentElement.appendChild(dot);
-
-    setTimeout(function () {
-      if (dot.parentNode) dot.parentNode.removeChild(dot);
-    }, 850);
+  function ensureCanvas() {
+    if (_cv) return;
+    _cv = document.createElement('canvas');
+    _cv.id = 'fx-canvas';
+    _cv.style.cssText =
+      'position:fixed;top:0;left:0;z-index:2147483647;pointer-events:none;display:block;';
+    document.documentElement.appendChild(_cv);
+    _ctx = _cv.getContext('2d');
+    resizeCanvas();
+    requestAnimationFrame(tick);
   }
 
-  function spawnTrailParticles(x, y) {
-    if (!_trailInit) {
-      _trailLastX = x;
-      _trailLastY = y;
-      _trailInit = true;
-      createMeteorParticle(x, y);
-      return;
-    }
+  function resizeCanvas() {
+    if (!_cv) return;
+    _cvW = window.innerWidth;
+    _cvH = window.innerHeight;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    _cv.width = _cvW * dpr;
+    _cv.height = _cvH * dpr;
+    _cv.style.width = _cvW + 'px';
+    _cv.style.height = _cvH + 'px';
+    if (_ctx) _ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
 
-    var dx = x - _trailLastX;
-    var dy = y - _trailLastY;
+  window.addEventListener('resize', resizeCanvas);
+
+  // ============================================
+  // TRAIL PARTICLES
+  // ============================================
+  function spawnTrail(x, y) {
+    if (!_hasLast) { _lastX = x; _lastY = y; _hasLast = true; _trailParts.push({ x: x, y: y, s: 3, o: 0.75, life: 1 }); return; }
+
+    var dx = x - _lastX;
+    var dy = y - _lastY;
     var dist = Math.sqrt(dx * dx + dy * dy);
-    var steps = Math.max(1, Math.floor(dist / 6));
-    var stepX = dx / steps;
-    var stepY = dy / steps;
+    var steps = Math.max(1, Math.floor(dist / 5));
+    var sx = dx / steps;
+    var sy = dy / steps;
 
     for (var i = 0; i < steps; i++) {
-      createMeteorParticle(
-        _trailLastX + stepX * i + (Math.random() - 0.5) * 4,
-        _trailLastY + stepY * i + (Math.random() - 0.5) * 4
-      );
+      _trailParts.push({
+        x: _lastX + sx * i + (Math.random() - 0.5) * 3,
+        y: _lastY + sy * i + (Math.random() - 0.5) * 3,
+        s: 1.5 + Math.random() * 3.5,
+        o: 0.55 + Math.random() * 0.4,
+        life: 1
+      });
+    }
+    _lastX = x;
+    _lastY = y;
+  }
+
+  // ============================================
+  // STAR PARTICLES
+  // ============================================
+  var _starShapes = ['✦', '✧', '⭑', '✶', '✵', '✴', '⋆', '⚝', '✬', '✫', '✩', '★'];
+  var _starColors = ['#a78bfa', '#c4b5fd', '#7c3aed', '#818cf8', '#f9a8d4', '#fde68a', '#67e8f9', '#a7f3d0', '#fca5a5', '#fdba74', '#d8b4fe', '#86efac'];
+
+  function spawnStars(cx, cy) {
+    var count = 1 + Math.floor(Math.random() * 3);
+    for (var i = 0; i < count; i++) {
+      _starParts.push({
+        x: cx + (Math.random() - 0.5) * 28,
+        y: cy + (Math.random() - 0.5) * 18,
+        vx: (Math.random() - 0.5) * 30,
+        vy: -40 - Math.random() * 60,
+        ch: _starShapes[Math.floor(Math.random() * _starShapes.length)],
+        c: _starColors[Math.floor(Math.random() * _starColors.length)],
+        fs: 10 + Math.random() * 16,
+        rot: (Math.random() - 0.5) * 360,
+        rv: (Math.random() - 0.5) * 180,
+        life: 1
+      });
+    }
+  }
+
+  // ============================================
+  // RENDER LOOP
+  // ============================================
+  function tick(ts) {
+    if (!_ctx || _cvW === 0) { requestAnimationFrame(tick); return; }
+    var dt = Math.min(50, ts ? 16.67 : 16.67) / 1000;
+
+    _ctx.clearRect(0, 0, _cvW, _cvH);
+
+    // Draw trail
+    for (var i = _trailParts.length - 1; i >= 0; i--) {
+      var p = _trailParts[i];
+      p.life -= dt * 1.15;
+      if (p.life <= 0) { _trailParts.splice(i, 1); continue; }
+      var alpha = p.o * p.life;
+      var rad = p.s * (0.3 + p.life * 0.7);
+      _ctx.beginPath();
+      _ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
+      _ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+      _ctx.shadowColor = 'rgba(200,210,255,' + (alpha * 0.5) + ')';
+      _ctx.shadowBlur = rad * 2.5;
+      _ctx.fill();
+    }
+    // Reset shadow for stars
+    _ctx.shadowColor = 'transparent';
+    _ctx.shadowBlur = 0;
+
+    // Draw stars
+    _ctx.textAlign = 'center';
+    _ctx.textBaseline = 'middle';
+    for (var j = _starParts.length - 1; j >= 0; j--) {
+      var sp = _starParts[j];
+      sp.life -= dt * 0.55;
+      if (sp.life <= 0) { _starParts.splice(j, 1); continue; }
+      sp.x += sp.vx * dt;
+      sp.y += sp.vy * dt;
+      sp.rot += sp.rv * dt;
+      var sa = sp.life;
+      _ctx.save();
+      _ctx.translate(sp.x, sp.y);
+      _ctx.rotate(sp.rot * Math.PI / 180);
+      _ctx.font = sp.fs + 'px sans-serif';
+      _ctx.fillStyle = sp.c;
+      _ctx.globalAlpha = sa;
+      _ctx.fillText(sp.ch, 0, 0);
+      _ctx.restore();
     }
 
-    _trailLastX = x;
-    _trailLastY = y;
+    // Garbage collect
+    if (_trailParts.length > 200) _trailParts.splice(0, _trailParts.length - 200);
+    if (_starParts.length > 60) _starParts.splice(0, _starParts.length - 60);
+
+    requestAnimationFrame(tick);
   }
 
   document.addEventListener('mousemove', function (e) {
-    spawnTrailParticles(e.clientX, e.clientY);
+    if (!_cv) ensureCanvas();
+    spawnTrail(e.clientX, e.clientY);
   }, { passive: true });
-
-  // ============================================
-  // STAR CLICK PARTICLES
-  // ============================================
-  var starSymbols = ['✦', '✧', '⭑', '✶', '✵', '✴', '⋆', '⚝', '✬', '✫', '✩', '★'];
-
-  function randomStar() {
-    return starSymbols[Math.floor(Math.random() * starSymbols.length)];
-  }
-
-  function randomStarColor() {
-    var palette = [
-      '#a78bfa', '#c4b5fd', '#7c3aed', '#818cf8',
-      '#f9a8d4', '#fde68a', '#67e8f9', '#a7f3d0',
-      '#fca5a5', '#fdba74', '#d8b4fe', '#86efac'
-    ];
-    return palette[Math.floor(Math.random() * palette.length)];
-  }
-
-  function createStarParticle(x, y) {
-    var span = document.createElement('span');
-    span.textContent = randomStar();
-    span.className = 'star-particle';
-    span.style.left = x + 'px';
-    span.style.top = y + 'px';
-    span.style.color = randomStarColor();
-    span.style.fontSize = (12 + Math.random() * 16) + 'px';
-
-    document.documentElement.appendChild(span);
-
-    setTimeout(function () {
-      if (span.parentNode) span.parentNode.removeChild(span);
-    }, 1900);
-  }
 
   document.addEventListener('click', function (e) {
     var tag = e.target.tagName.toLowerCase();
     if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'textarea') return;
     if (e.target.closest && e.target.closest('a, button, input, textarea, .modal, .navbar, #search-btn, #local-search-input')) return;
-
-    var count = 1 + Math.floor(Math.random() * 3);
-    for (var i = 0; i < count; i++) {
-      createStarParticle(
-        e.clientX + (Math.random() - 0.5) * 28,
-        e.clientY + (Math.random() - 0.5) * 18
-      );
-    }
+    if (!_cv) ensureCanvas();
+    spawnStars(e.clientX, e.clientY);
   });
 
   // ============================================

@@ -899,41 +899,13 @@ footer {
 
 .post-navigation a:hover { border-color: var(--accent); box-shadow: var(--shadow); text-decoration: none; }
 
-/* ============================================
-   METEOR TRAIL PARTICLES (JS-driven)
-   ============================================ */
-.meteor-particle {
+/* Canvas FX overlay — meteor trail + star particles rendered via 2D context */
+#fx-canvas {
   position: fixed;
-  z-index: 999998;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
   pointer-events: none;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 6px 2px rgba(255,255,255,0.7), 0 0 12px 4px rgba(200,210,255,0.35);
-  animation: meteorFade 0.8s ease-out forwards;
-}
-
-@keyframes meteorFade {
-  0% { opacity: 0.9; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.1); }
-}
-
-/* ============================================
-   CLICK STAR PARTICLES
-   ============================================ */
-.star-particle {
-  position: fixed;
-  z-index: 999999;
-  pointer-events: none;
-  user-select: none;
-  animation: starFloat 1.8s ease-out forwards;
-  font-size: 14px;
-}
-
-@keyframes starFloat {
-  0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translateY(-110px) scale(0.2) rotate(180deg); }
 }
 
 /* ============================================
@@ -964,7 +936,7 @@ footer {
 @media print {
   body { background: #fff !important; color: #000; cursor: auto !important; }
   .navbar, footer, #scroll-top-button, #banner, .pagination, .post-navigation,
-  .meteor-particle, .star-particle, .hero-profile, .scroll-indicator { display: none !important; }
+  #fx-canvas, .hero-profile, .scroll-indicator { display: none !important; }
   .index-card, .post-container .post-content { background: #fff; border: 1px solid #ddd; backdrop-filter: none; box-shadow: none; }
 }
 
