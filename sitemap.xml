@@ -2,34 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://brightnewmoon.top/bangumi/index.html</loc>
-    
-    <lastmod>2026-06-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/guestbook/index.html</loc>
-    
-    <lastmod>2026-06-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/sponsor/index.html</loc>
-    
-    <lastmod>2026-06-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/gallery/index.html</loc>
+    <loc>https://brightnewmoon.top/projects/index.html</loc>
     
     <lastmod>2026-06-04</lastmod>
     
@@ -40,16 +13,7 @@
   <url>
     <loc>https://brightnewmoon.top/2026/05/30/hexo-fluid-blog-setup/</loc>
     
-    <lastmod>2026-06-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/admin/index.html</loc>
-    
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,14 +22,14 @@
   <url>
     <loc>https://brightnewmoon.top/about/index.html</loc>
     
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://brightnewmoon.top/projects/index.html</loc>
+    <loc>https://brightnewmoon.top/admin/index.html</loc>
     
     <lastmod>2026-06-01</lastmod>
     
@@ -128,13 +92,6 @@
 
   
   <url>
-    <loc>https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://brightnewmoon.top/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -162,17 +119,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://brightnewmoon.top/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://brightnewmoon.top/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://brightnewmoon.top/categories/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://brightnewmoon.top/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
