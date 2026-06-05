@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://brightnewmoon.top/2026/06/06/Physics-I-Review/</loc>
+    
+    <lastmod>2026-06-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://brightnewmoon.top/2026/06/06/Linear-Algebra-Review/</loc>
     
     <lastmod>2026-06-05</lastmod>
@@ -288,6 +297,48 @@
   
   <url>
     <loc>https://brightnewmoon.top/tags/UART/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/UESTC1009/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/Physics-I/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/%E5%8A%9B%E5%AD%A6/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/%E6%8C%AF%E5%8A%A8%E4%B8%8E%E6%B3%A2/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://brightnewmoon.top/tags/%E5%85%89%E5%AD%A6/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
