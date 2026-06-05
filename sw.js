@@ -1,4 +1,4 @@
-const CACHE = 'brightnewmoon-1780685139869';
+const CACHE = 'brightnewmoon-1780686014905';
 const PRE_CACHE = [
   '/',
   '/css/main.css',
@@ -49,14 +49,16 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // Assets — cache first
+  // Assets — network first, cache fallback
   e.respondWith(
-    caches.match(e.request).then(function (cached) {
-      return cached || fetch(e.request).then(function (res) {
+    fetch(e.request)
+      .then(function (res) {
         var clone = res.clone();
         caches.open(CACHE).then(function (cache) { cache.put(e.request, clone); });
         return res;
-      });
-    })
+      })
+      .catch(function () {
+        return caches.match(e.request);
+      })
   );
 });
