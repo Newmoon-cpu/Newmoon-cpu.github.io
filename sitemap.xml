@@ -11,60 +11,6 @@
   </url>
   
   <url>
-    <loc>https://brightnewmoon.top/study-resources/Chapter14-Partial-Derivatives-Study-Notes.html</loc>
-    
-    <lastmod>2026-06-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/study-resources/calc2-chapter12-vectors-geometry-space.html</loc>
-    
-    <lastmod>2026-06-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/study-resources/calc2-ch16-integration-in-vector-fields.html</loc>
-    
-    <lastmod>2026-06-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/study-resources/calc2-chapter13-vector-functions-notes.html</loc>
-    
-    <lastmod>2026-06-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/study-resources/calc2-chapter15-multiple-integrals.html</loc>
-    
-    <lastmod>2026-06-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/study-resources/calc2-chapter10-study-notes.html</loc>
-    
-    <lastmod>2026-06-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://brightnewmoon.top/projects/index.html</loc>
     
     <lastmod>2026-06-04</lastmod>
@@ -155,6 +101,13 @@
 
   
   <url>
+    <loc>https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://brightnewmoon.top/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -184,13 +137,6 @@
   
   <url>
     <loc>https://brightnewmoon.top/tags/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://brightnewmoon.top/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -227,14 +173,14 @@
 
   
   <url>
-    <loc>https://brightnewmoon.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://brightnewmoon.top/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://brightnewmoon.top/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://brightnewmoon.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
