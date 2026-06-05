@@ -1,4 +1,4 @@
-const CACHE = 'brightnewmoon-1780693765002';
+const CACHE = 'brightnewmoon-1780694330901';
 const PRE_CACHE = [
   '/',
   '/css/main.css',
